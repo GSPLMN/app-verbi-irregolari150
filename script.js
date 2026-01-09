@@ -1,34 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  const searchInput = document.getElementById("search");
+
   fetch("verbs.csv")
     .then(r => r.text())
     .then(csv => {
       const rows = csv.split("\n").slice(1);
       const tbody = document.querySelector("#verbs-table tbody");
 
-      if (!tbody) {
-        console.error("tbody non trovato");
-        return;
-      }
+      if (!tbody) return;
 
       rows.forEach(row => {
         if (!row.trim()) return;
 
-        // split CSV semplice (assumendo campi tra virgolette)
         const cols = row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
-        if (!cols || cols.length < 2) return;
+        if (!cols) return;
 
         const tr = document.createElement("tr");
 
-        // === COLONNA 1: Base - PS - PP + AUDIO ===
+        // === COLONNA 1: VERBO + AUDIO ===
         const verbForms = cols[0].replace(/"/g, "").trim();
 
         const fileName = verbForms
           .toLowerCase()
-          .replace(/–|—/g, "-")
           .replace(/\s*-\s*/g, "-")
           .replace(/\s+/g, "-")
           .replace(/[^a-z\-]/g, "")
-          .replace(/-+/g, "-")
           + ".mp3";
 
         const tdVerb = document.createElement("td");
@@ -63,14 +60,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         tbody.appendChild(tr);
       });
-    })
-    .catch(err => console.error("Errore CSV:", err));
-});
-const searchInput = document.getElementById("search");
 
-searchInput.addEventListener("input", () => {
-  const value = searchInput.value.toLowerCase();
-  const rows = document.querySelectorAll("#verbs-table tbody tr");
+      // 🔍 RICERCA (ORA FUNZIONA)
+      searchInput.addEventListener("input", () => {
+        const value = searchInput.value.toLowerCase();
+        const rows = tbody.querySelectorAll("tr");
+
+        rows.forEach(row => {
+          const verbText = row.children[0].innerText.toLowerCase();
+          row.style.display = verbText.includes(value) ? "" : "none";
+        });
+      });
+
+    });
+});
 
   rows.forEach(row => {
     const verbCell = row.children[0].innerText.toLowerCase();
