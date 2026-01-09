@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("verbs.csv")
     .then(r => r.text())
     .then(csv => {
+
       const rows = csv.split("\n").slice(1);
       const tbody = document.querySelector("#verbs-table tbody");
 
@@ -61,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tbody.appendChild(tr);
       });
 
-      // 🔍 RICERCA (ORA FUNZIONA)
+      // 🔍 RICERCA
       searchInput.addEventListener("input", () => {
         const value = searchInput.value.toLowerCase();
         const rows = tbody.querySelectorAll("tr");
@@ -72,11 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
 
-    });
-});
-
-  rows.forEach(row => {
-    const verbCell = row.children[0].innerText.toLowerCase();
-    row.style.display = verbCell.includes(value) ? "" : "none";
-  });
+    })
+    .catch(err => console.error("Errore CSV:", err));
 });
