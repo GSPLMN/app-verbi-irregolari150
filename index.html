@@ -42,6 +42,14 @@
       top: 0;
       z-index: 2;
     }
+ /* Colonna verbo sempre visibile */
+#verbs-table th:first-child,
+#verbs-table td:first-child {
+  position: sticky;
+  left: 0;
+  background: white;
+  z-index: 3;
+}
   </style>
 </head>
 
@@ -81,11 +89,4 @@
 
 </body>
 </html>
-/* Colonna verbo sempre visibile */
-#verbs-table th:first-child,
-#verbs-table td:first-child {
-  position: sticky;
-  left: 0;
-  background: white;
-  z-index: 3;
-}
+
