@@ -37,13 +37,45 @@
       cursor: pointer;
       padding: 6px 10px;
     }
-/* PRIMA COLONNA: Base - PS - PP */
+/* Prima colonna sticky */
+#verbs-table th:nth-child(1),
+#verbs-table td:nth-child(1) {
+  position: sticky;
+  left: 0;
+  background: #ffffff;
+  z-index: 2;
+}
+
+/* intestazione sopra tutto */
+#verbs-table th:nth-child(1) {
+  z-index: 3;
+}
+
+    /* PRIMA COLONNA: Base - PS - PP */
 #verbs-table th:nth-child(1),
 #verbs-table td:nth-child(1) {
   width: 220px;
   min-width: 220px;
   font-weight: bold;
 }
+/* Bottone verbo → stile link */
+#verbs-table button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #1a73e8; /* blu link */
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* Hover stile link */
+#verbs-table button:hover {
+  text-decoration: underline;
+}
+
     /* ULTIMA COLONNA: Trad Common errors */
 #verbs-table th:nth-child(11),
 #verbs-table td:nth-child(11) {
@@ -63,6 +95,12 @@
 <body>
 
   <h1>Irregular Verbs</h1>
+<input
+  type="text"
+  id="search"
+  placeholder="Search verb (base, past or participle)..."
+  style="width:100%; padding:8px; margin-bottom:12px;"
+>
 
   <!-- TABELLA -->
   <table id="verbs-table">
