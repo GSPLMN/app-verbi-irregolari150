@@ -66,3 +66,14 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Errore CSV:", err));
 });
+const searchInput = document.getElementById("search");
+
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+  const rows = document.querySelectorAll("#verbs-table tbody tr");
+
+  rows.forEach(row => {
+    const verbCell = row.children[0].innerText.toLowerCase();
+    row.style.display = verbCell.includes(value) ? "" : "none";
+  });
+});
