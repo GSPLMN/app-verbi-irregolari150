@@ -42,7 +42,16 @@
       top: 0;
       z-index: 2;
     }
-   </style>
+ /* Colonna verbo sempre visibile */
+#verbs-table th:first-child,
+#verbs-table td:first-child {
+  position: sticky;
+  left: 0;
+  background: white;
+  z-index: 3;
+}
+  
+  </style>
 </head>
 
 <body>
