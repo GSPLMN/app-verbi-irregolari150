@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const tdVerb = document.createElement("td");
 
         const btn = document.createElement("button");
-        btn.textContent = verbForms;
         btn.className = "verb-btn";
-
+        btn.textContent = verbForms;
+       
         const audio = document.createElement("audio");
         audio.src = "audio/" + fileName;
         audio.controls = true;
