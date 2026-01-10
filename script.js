@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const btn = document.createElement("button");
         btn.textContent = verbForms;
+        btn.className = "verb-btn";
 
         const audio = document.createElement("audio");
         audio.src = "audio/" + fileName;
