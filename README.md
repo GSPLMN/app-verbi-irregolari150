@@ -1,2 +1,2 @@
 # app-verbi-irregolari (150)
-Tabella Verbi Irregolari con audio
+Tabella dei più noti Verbi Irregolari, con pronuncia.
